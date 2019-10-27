@@ -1,0 +1,21 @@
+version: '3'
+services:
+  db:
+    # Check README.md before upversioning
+    image: mariadb:10.1
+    container_name: db
+    restart: always
+    ports:
+      - "3306:3306"
+    volumes:
+      - mariadb:/var/lib/mysql
+      - ./db/initdb.d:/docker-entrypoint-initdb.d
+      - ./db/conf.d:/etc/mysql/conf.d
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+      MYSQL_DATABASE: pg_database
+
+volumes:
+  mariadb:
