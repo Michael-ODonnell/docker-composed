@@ -1,0 +1,9 @@
+version: '3'
+services:
+  gcc:
+    image: gcc:latest
+    container_name: gcc
+    restart: on-failure
+    volumes:
+      - ./src/:/app
+    command: /app/build_and_run.sh
